@@ -16,7 +16,7 @@
         }
     },
     "require": {
-        "php": "^8.4",
+        "php": "^8.5",
         "ifcastle/exceptions": "^5.1",
         "ifcastle/di": "^0.8"
     },
