@@ -15,7 +15,7 @@ class RecursiveIteratorByIteratorWithPathTest extends TestCase
     #[\Override]
     protected function setUp(): void
     {
-        $this->recursiveIterator    = $this->getMockBuilder(\RecursiveIterator::class)->getMock();
+        $this->recursiveIterator    = $this->createMock(\RecursiveIterator::class);
         $this->recursiveIteratorWithPath = new RecursiveIteratorByIteratorWithPath($this->recursiveIterator);
     }
 
@@ -54,6 +54,7 @@ class RecursiveIteratorByIteratorWithPathTest extends TestCase
         $this->recursiveIteratorWithPath->rewind();
     }
 
+    #[\PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations]
     public function testTreeTraversal(): void
     {
         $tree                       = new NodeRecursiveIterator(
@@ -92,6 +93,7 @@ class RecursiveIteratorByIteratorWithPathTest extends TestCase
         $this->assertEquals($expectedVisitedNodes, $visitedNodes);
     }
 
+    #[\PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations]
     public function testTreeTraversalWithSelfLast(): void
     {
         $tree                       = new NodeRecursiveIterator(
@@ -121,6 +123,7 @@ class RecursiveIteratorByIteratorWithPathTest extends TestCase
         $this->assertEquals($expectedVisitedNodes, $visitedNodes);
     }
 
+    #[\PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations]
     public function testParent(): void
     {
         $tree                       = new NodeRecursiveIterator(
