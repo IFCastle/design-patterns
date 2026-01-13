@@ -57,7 +57,7 @@ class RecursiveIteratorByIteratorWithPath implements
             return null;
         }
 
-        return array_last($this->path) ?? null;
+        return \array_last($this->path) ?? null;
     }
 
     #[\Override]
@@ -67,7 +67,7 @@ class RecursiveIteratorByIteratorWithPath implements
             return null;
         }
 
-        $iterator                   = array_last($this->path) ?? null;
+        $iterator                   = \array_last($this->path) ?? null;
 
         if ($iterator instanceof \Iterator) {
             return $iterator->current();
