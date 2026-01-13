@@ -41,7 +41,7 @@ class BeforeAfterPlanWithMapping extends ExecutionPlanWithMapping implements Bef
 
         $stage                      = $this->getBeforeStage($action);
 
-        if (false === \array_key_exists($stage, $this->stages)) {
+        if (false === \array_key_exists($stage ?? '', $this->stages)) {
             // Add stage before action
 
             if (false === \array_key_exists($action, $this->stages)) {
@@ -77,7 +77,7 @@ class BeforeAfterPlanWithMapping extends ExecutionPlanWithMapping implements Bef
     ): static {
         $stage                      = $this->getAfterStage($action);
 
-        if (false === \array_key_exists($stage, $this->stages)) {
+        if (false === \array_key_exists($stage ?? '', $this->stages)) {
             // Add stage after action
             if (false === \array_key_exists($action, $this->stages)) {
                 throw new BaseException([

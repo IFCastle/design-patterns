@@ -21,8 +21,8 @@ class ExecutionPlanWithMappingTest extends TestCase
             $result[]               = $text;
         };
 
-        $hashHandler1               = new class ($printer) implements HandlerWithHashInterface {
-            public function __construct(private readonly mixed $printer) {}
+        $hashHandler1               = new readonly class ($printer) implements HandlerWithHashInterface {
+            public function __construct(private mixed $printer) {}
 
             public function __invoke(): void
             {
@@ -30,14 +30,14 @@ class ExecutionPlanWithMappingTest extends TestCase
             }
 
             #[\Override]
-            public function getHandlerHash(): string|int|null
+            public function getHandlerHash(): string
             {
                 return 'hash1';
             }
         };
 
-        $hashHandler2               = new class ($printer) implements HandlerWithHashInterface {
-            public function __construct(private readonly mixed $printer) {}
+        $hashHandler2               = new readonly class ($printer) implements HandlerWithHashInterface {
+            public function __construct(private mixed $printer) {}
 
             public function __invoke(): void
             {
@@ -45,7 +45,7 @@ class ExecutionPlanWithMappingTest extends TestCase
             }
 
             #[\Override]
-            public function getHandlerHash(): string|int|null
+            public function getHandlerHash(): string
             {
                 return 'hash2';
             }

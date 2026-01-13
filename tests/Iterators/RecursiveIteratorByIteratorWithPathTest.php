@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class RecursiveIteratorByIteratorWithPathTest extends TestCase
 {
-    private \RecursiveIterator $recursiveIterator;
+    private \PHPUnit\Framework\MockObject\MockObject $recursiveIterator;
 
     private RecursiveIteratorByIteratorWithPath $recursiveIteratorWithPath;
 

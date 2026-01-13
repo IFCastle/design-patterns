@@ -18,7 +18,7 @@ final class ReturnFactory implements ReturnFactoryInterface
      * @return Decorator<T>
      */
     #[\Override]
-    public function createDecorator(object $originalObject, PoolInterface $pool): object
+    public function createDecorator(object $originalObject, PoolInterface $pool): \IfCastle\DesignPatterns\Pool\Decorator
     {
         return new Decorator($originalObject, $pool);
     }

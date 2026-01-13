@@ -63,7 +63,7 @@ class ExecutionPlanWithMapping extends ExecutionPlan implements ExecutionPlanWit
 
         $handlers                   = &$this->stages[$stage];
 
-        if ($noRedefine && \array_key_exists($hash, $handlers) && $handlers[$hash] !== $handler) {
+        if ($noRedefine && \array_key_exists((string) $hash, $handlers) && $handlers[$hash] !== $handler) {
             throw new BaseException([
                 'template'          => 'Attempt to override an existing handler {handler} with hash {hash}',
                 'hash'              => $hash,
