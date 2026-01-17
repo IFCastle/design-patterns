@@ -42,6 +42,7 @@ final readonly class WeakStaticClosureExecutor implements HandlerExecutorInterfa
         $self                       = $this->self->get();
         $executor                   = $this->executor;
 
+        /** @phpstan-ignore function.alreadyNarrowedType */
         if (\is_callable($executor)) {
             return $executor($self, $handler, $stage, ...$parameters);
         }

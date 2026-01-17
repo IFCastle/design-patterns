@@ -6,6 +6,7 @@ namespace IfCastle\DesignPatterns\FinalHandlers;
 
 trait FinalHandlersTrait
 {
+    /** @var callable[] */
     protected array $finalHandlers  = [];
 
     public function addFinalHandler(callable $handler): static
@@ -26,6 +27,9 @@ trait FinalHandlersTrait
         return $this;
     }
 
+    /**
+     * @return \Throwable[]
+     */
     protected function executeFinalHandlers(): array
     {
         $errors                     = [];

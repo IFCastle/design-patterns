@@ -30,6 +30,7 @@ class KeyValueContext implements \ArrayAccess, \IteratorAggregate, ImmutableInte
     #[\Override]
     public function offsetExists(mixed $offset): bool
     {
+        /** @phpstan-ignore function.alreadyNarrowedType */
         if (!\is_string($offset)) {
             throw new \InvalidArgumentException('The offset must be a string');
         }
@@ -40,6 +41,7 @@ class KeyValueContext implements \ArrayAccess, \IteratorAggregate, ImmutableInte
     #[\Override]
     public function offsetGet(mixed $offset): mixed
     {
+        /** @phpstan-ignore function.alreadyNarrowedType */
         if (!\is_string($offset)) {
             throw new \InvalidArgumentException('The offset must be a string');
         }
@@ -68,6 +70,7 @@ class KeyValueContext implements \ArrayAccess, \IteratorAggregate, ImmutableInte
     #[\Override]
     public function offsetUnset(mixed $offset): void
     {
+        /** @phpstan-ignore function.alreadyNarrowedType */
         if (!\is_string($offset)) {
             throw new \InvalidArgumentException('The offset must be a string');
         }

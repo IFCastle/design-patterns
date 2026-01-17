@@ -9,6 +9,7 @@ final class HandlerExecutorCallable implements HandlerExecutorInterface
     #[\Override]
     public function executeHandler(mixed $handler, string $stage, mixed ...$parameters): mixed
     {
+        /** @phpstan-ignore function.alreadyNarrowedType */
         if (\is_callable($handler)) {
             return $handler($stage, ...$parameters);
         }
