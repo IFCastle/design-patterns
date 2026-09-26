@@ -30,8 +30,14 @@ class PlanExecutorWithStageControl implements PlanExecutorInterface
 
         foreach ($stages as $stage => $handlers) {
 
-            if ($nextStage !== null && $stage !== $nextStage) {
-                continue;
+            if ($nextStage !== null) {
+
+                if ($stage !== $nextStage) {
+                    continue;
+                }
+
+                // The target is reached: the stages after it run in their normal order.
+                $nextStage          = null;
             }
 
             if ($handlers === []) {
