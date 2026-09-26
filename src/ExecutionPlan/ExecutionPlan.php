@@ -17,8 +17,6 @@ class ExecutionPlan implements ExecutionPlanInterface
      */
     protected array $stages         = [];
 
-    protected string $currentStage  = '';
-
     /**
      * @param array<string> $stages
      */
@@ -30,12 +28,6 @@ class ExecutionPlan implements ExecutionPlanInterface
         foreach ($stages as $stage) {
             $this->stages[$stage]   = [];
         }
-    }
-
-    #[\Override]
-    public function getCurrentStage(): string
-    {
-        return $this->currentStage;
     }
 
     #[\Override]
@@ -75,8 +67,10 @@ class ExecutionPlan implements ExecutionPlanInterface
         return $this;
     }
 
-    protected function setCurrentStage(string $stage): void
-    {
-        $this->currentStage         = $stage;
-    }
+    /**
+     * Called when a run of the plan enters $stage. The plan itself keeps no per-run state, because
+     * one plan may run for several requests at once; a subclass forwards the stage to its per-run
+     * context.
+     */
+    protected function setCurrentStage(string $stage): void {}
 }

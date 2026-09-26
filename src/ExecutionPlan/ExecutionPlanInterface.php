@@ -8,8 +8,6 @@ use IfCastle\DesignPatterns\Immutable\ImmutableInterface;
 
 interface ExecutionPlanInterface extends ImmutableInterface
 {
-    public function getCurrentStage(): string;
-
     public function executePlan(mixed ...$parameters): void;
 
     public function addStageHandler(
