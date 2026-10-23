@@ -112,4 +112,14 @@ class PoolTest extends TestCase
         $this->assertEquals('object4', $object1->getOriginalObject()->name);
         $this->assertEquals('object5', $object2->getOriginalObject()->name);
     }
+
+    public function testReturnWithinReductionDelayKeepsCreatedObject(): void
+    {
+        $pool                       = new Pool(new SomeFactory(), 3, delayPoolReduction: 60);
+        $object                     = $pool->borrow();
+        $pool->return($object);
+
+        $this->assertEquals(1, $pool->getPoolSize(), 'An object returned within the delay stays in the pool');
+        $this->assertEquals('object1', $pool->borrow()->getOriginalObject()->name);
+    }
 }

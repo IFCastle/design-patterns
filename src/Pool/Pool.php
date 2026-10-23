@@ -69,6 +69,10 @@ class Pool implements PoolInterface
         $decorator               = $this->returnFactory->createDecorator($this->factory->createObject(), $this);
         $this->borrowed[\spl_object_id($decorator)] = $decorator;
 
+        if ($this->delayPoolReduction > 0) {
+            $this->lastBorrowAt = \time();
+        }
+
         return $decorator;
     }
 
