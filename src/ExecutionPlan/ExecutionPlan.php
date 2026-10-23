@@ -13,7 +13,10 @@ class ExecutionPlan implements ExecutionPlanInterface
     use ImmutableTrait;
 
     /**
-     * @var array<string, string[]>
+     * The handlers of each stage, in the order they run: callables or the objects the plan's executor runs, keyed by
+     * position or, in a plan with mapping, by their hash.
+     *
+     * @var array<string, array<array-key, mixed>>
      */
     protected array $stages         = [];
 
